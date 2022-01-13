@@ -1,46 +1,20 @@
-# Next.js example
+# Next.js SWC minify bug
 
-## How to use
+## How to re-create
 
-Download the example [or clone the repo](https://github.com/mui-org/material-ui):
+1. Make sure `swcMinify` is true in the `next.config.js` file
+2. Run `npm run build`
+3. Run `npm start`
 
-<!-- #default-branch-switch -->
+At this point,
 
-```sh
-curl https://codeload.github.com/mui-org/material-ui/tar.gz/master | tar -xz --strip=2  material-ui-master/examples/nextjs
-cd nextjs
-```
+- the user in no longer able to focus on a given input and the system selects the last input as the default even though the user can actually input the data.
+- for the date picker, the cursor no longer goes to the next character, instead it goes one step back everytime the user inputs a character.
 
-Install it and run:
+## Fix for the above
 
-```sh
-npm install
-npm run dev
-```
+1. Turn off `swcMinify` in the `next.config.js` file
+2. Run `npm run build`
+3. Run `npm start`
 
-or:
-
-<!-- #default-branch-switch -->
-
-[![Edit on StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/mui-org/material-ui/tree/master/examples/nextjs)
-
-[![Edit on CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/mui-org/material-ui/tree/master/examples/nextjs)
-
-## The idea behind the example
-
-The project uses [Next.js](https://github.com/vercel/next.js), which is a framework for server-rendered React apps.
-It includes `@mui/material` and its peer dependencies, including `emotion`, the default style engine in MUI v5.
-If you prefer, you can [use styled-components instead](https://mui.com/guides/interoperability/#styled-components).
-
-## The link component
-
-Next.js has [a custom Link component](https://nextjs.org/docs/api-reference/next/link).
-The example folder provides adapters for usage with MUI.
-More information [in the documentation](https://mui.com/guides/routing/#next-js).
-
-## What's next?
-
-<!-- #default-branch-switch -->
-
-You now have a working example project.
-You can head back to the documentation, continuing browsing it from the [templates](https://mui.com/getting-started/templates/) section.
+Both the otp input and the date picker are fully functional.
